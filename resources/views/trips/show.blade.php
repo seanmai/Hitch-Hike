@@ -8,4 +8,11 @@
     @can('update', $trip)
         <a href="/trips/{{ $trip->id }}/edit"><button type="button" name="button">Edit</button></a>
     @endcan
+    @can('join', $trip)
+        <a href="/trips/{{ $trip->id }}/edit"><button type="button" name="button">Join</button></a>
+    @endcan
+    @can('leave', $trip)
+        <a href="/trips/{{ $trip->id }}/edit"><button type="button" name="button">Leave</button></a>
+    @endcan
+
 @endsection

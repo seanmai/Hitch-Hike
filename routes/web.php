@@ -24,6 +24,10 @@ Route::get('/trips/{trip}/edit', 'TripsController@edit');
 Route::put('/trips/{trip}', 'TripsController@update');
 Route::delete('/trips/{trip}', 'TripsController@destroy');
 
+Route::get('/users/{user}/trips', 'TripsController@showusers');
+// Route::put('/trips/{trip}/join', 'TripsController@add')->middleware('auth');
+// Route::put('/trips/{trip}/leave', 'TripsController@remove')->middleware('auth');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
