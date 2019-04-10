@@ -1,0 +1,70 @@
+html{
+    height: 100%;
+
+}
+
+body{
+    height: 100%;
+}
+
+.map-column{
+    padding: 0;
+    top: 55px;
+    position: fixed;
+    height: calc(100% - 55px);
+}
+
+.display-column{
+    padding: 0;
+    top: 55px;
+}
+
+.display-column .display-header{
+    padding-top: 10px;
+    height: 70px;
+    border-bottom: 1px solid #ccc;
+    font-size: 36px;
+    font-weight: 500;
+    position: fixed;
+    width: 100%;
+    background: white;
+    overflow: auto;
+}
+
+.display-column .display-header .create-btn{
+}
+
+.display-column .display-list{
+    padding-top: 70px;
+}
+
+.display-column a{
+    text-decoration: none;
+}
+
+#map{
+    height: 100%;
+}
+
+.trip-preview{
+    color: #000;
+    margin-left: 15px;
+    height: 130px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.trip-preview-title{
+    font-size: 20px;
+}
+
+.trip-preview-seats, .trip-preview-departure-time{
+    color: #333;
+    font-size: 14px;
+}
+
+.trip-preview-description{
+    color: #777;
+    font-size: 14px;
+    padding-top: 10px;
+}

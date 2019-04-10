@@ -1,12 +1,122 @@
 @extends('layout')
 
 @section('content')
-    <h1>Trips</h1>
-    @foreach ($trips as $trip)
-        <p><a href="/trips/{{ $trip->id }}">{{ $trip->title }}</a></p>
-    @endforeach
-    <a href="/trips/create"><button type="button" name="button" class="btn btn-success">Create a new trip!</button></a>
-    <div id="map" style="height:425px;"></div>
+    <div class="row">
+
+        <div class="col-8 map-column">
+            <div id="map"></div>
+        </div>
+        <div class="col-4 offset-8 display-column">
+            <div class="display-header">
+                Available Trips
+                <a href="/trips/create"><span class="create-btn"><i class="fas fa-plus"></i></span></a>
+            </div>
+            <div class="display-list">
+                @foreach ($trips as $trip)
+                <a href="/trips/{{ $trip->id }}">
+                    <div class="trip-preview">
+                        <div class="trip-preview-title">
+                            {{ $trip->title }}
+                        </div>
+                        <div class="trip-preview-seats">
+                            {{ $trip->available_seats }} available seats
+                        </div>
+                        <div class="trip-preview-departure-time">
+                            Departure Time: {{ $trip->departure_time }}
+                        </div>
+                        <div class="trip-preview-description">
+                            {{ $trip->description }}
+                        </div>
+                    </div>
+                </a>
+                @endforeach
+                <div class="trip-preview">
+                    <div class="trip-preview-title">
+                        {{ $trip->title }}
+                    </div>
+                    <div class="trip-preview-seats">
+                        {{ $trip->available_seats }} available seats
+                    </div>
+                    <div class="trip-preview-departure-time">
+                        Departure Time: {{ $trip->departure_time }}
+                    </div>
+                    <div class="trip-preview-description">
+                        {{ $trip->description }}
+                    </div>
+                </div>
+                <div class="trip-preview">
+                    <div class="trip-preview-title">
+                        {{ $trip->title }}
+                    </div>
+                    <div class="trip-preview-seats">
+                        {{ $trip->available_seats }} available seats
+                    </div>
+                    <div class="trip-preview-departure-time">
+                        Departure Time: {{ $trip->departure_time }}
+                    </div>
+                    <div class="trip-preview-description">
+                        {{ $trip->description }}
+                    </div>
+                </div>
+                <div class="trip-preview">
+                    <div class="trip-preview-title">
+                        {{ $trip->title }}
+                    </div>
+                    <div class="trip-preview-seats">
+                        {{ $trip->available_seats }} available seats
+                    </div>
+                    <div class="trip-preview-departure-time">
+                        Departure Time: {{ $trip->departure_time }}
+                    </div>
+                    <div class="trip-preview-description">
+                        {{ $trip->description }}
+                    </div>
+                </div>
+                <div class="trip-preview">
+                    <div class="trip-preview-title">
+                        {{ $trip->title }}
+                    </div>
+                    <div class="trip-preview-seats">
+                        {{ $trip->available_seats }} available seats
+                    </div>
+                    <div class="trip-preview-departure-time">
+                        Departure Time: {{ $trip->departure_time }}
+                    </div>
+                    <div class="trip-preview-description">
+                        {{ $trip->description }}
+                    </div>
+                </div>
+                <div class="trip-preview">
+                    <div class="trip-preview-title">
+                        {{ $trip->title }}
+                    </div>
+                    <div class="trip-preview-seats">
+                        {{ $trip->available_seats }} available seats
+                    </div>
+                    <div class="trip-preview-departure-time">
+                        Departure Time: {{ $trip->departure_time }}
+                    </div>
+                    <div class="trip-preview-description">
+                        {{ $trip->description }}
+                    </div>
+                </div>
+                <div class="trip-preview">
+                    <div class="trip-preview-title">
+                        {{ $trip->title }}
+                    </div>
+                    <div class="trip-preview-seats">
+                        {{ $trip->available_seats }} available seats
+                    </div>
+                    <div class="trip-preview-departure-time">
+                        Departure Time: {{ $trip->departure_time }}
+                    </div>
+                    <div class="trip-preview-description">
+                        {{ $trip->description }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
     function initMap() {
         var trips = {!! json_encode($trips->toArray(), JSON_HEX_TAG) !!};

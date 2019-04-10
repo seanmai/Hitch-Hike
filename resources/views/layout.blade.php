@@ -3,9 +3,11 @@
     <head>
         <meta charset="utf-8">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/index.css') }}">
         <title></title>
     </head>
-    <body style="padding-top: 60px;">
+    <body>
         <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -41,9 +43,7 @@
                 </ul>
             </div>
         </nav>
-        <div class="container">
-            @yield('content')
-        </div>
+        @yield('content')
         <script type="text/javascript">
             function parseLatitude(latlong){
                 return latlong.substring(0, latlong.indexOf(','));

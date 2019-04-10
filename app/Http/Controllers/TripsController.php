@@ -64,7 +64,9 @@ class TripsController extends Controller
     public function destroy(Trip $trip){
         $this->authorize('delete', $trip);
 
+        $usertrips = UserTrip::where('trip_id', $trip->id);
         $trip->delete();
+        $usertrips->delete();
 
         return redirect('/trips');
     }
