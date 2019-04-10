@@ -4,7 +4,7 @@
     <div class="row">
 
         <div class="col-8 map-column">
-            <div id="map"></div>
+            <div id="index-map"></div>
         </div>
         <div class="col-4 offset-8 display-column">
             <div class="display-header">
@@ -30,90 +30,6 @@
                     </div>
                 </a>
                 @endforeach
-                <div class="trip-preview">
-                    <div class="trip-preview-title">
-                        {{ $trip->title }}
-                    </div>
-                    <div class="trip-preview-seats">
-                        {{ $trip->available_seats }} available seats
-                    </div>
-                    <div class="trip-preview-departure-time">
-                        Departure Time: {{ $trip->departure_time }}
-                    </div>
-                    <div class="trip-preview-description">
-                        {{ $trip->description }}
-                    </div>
-                </div>
-                <div class="trip-preview">
-                    <div class="trip-preview-title">
-                        {{ $trip->title }}
-                    </div>
-                    <div class="trip-preview-seats">
-                        {{ $trip->available_seats }} available seats
-                    </div>
-                    <div class="trip-preview-departure-time">
-                        Departure Time: {{ $trip->departure_time }}
-                    </div>
-                    <div class="trip-preview-description">
-                        {{ $trip->description }}
-                    </div>
-                </div>
-                <div class="trip-preview">
-                    <div class="trip-preview-title">
-                        {{ $trip->title }}
-                    </div>
-                    <div class="trip-preview-seats">
-                        {{ $trip->available_seats }} available seats
-                    </div>
-                    <div class="trip-preview-departure-time">
-                        Departure Time: {{ $trip->departure_time }}
-                    </div>
-                    <div class="trip-preview-description">
-                        {{ $trip->description }}
-                    </div>
-                </div>
-                <div class="trip-preview">
-                    <div class="trip-preview-title">
-                        {{ $trip->title }}
-                    </div>
-                    <div class="trip-preview-seats">
-                        {{ $trip->available_seats }} available seats
-                    </div>
-                    <div class="trip-preview-departure-time">
-                        Departure Time: {{ $trip->departure_time }}
-                    </div>
-                    <div class="trip-preview-description">
-                        {{ $trip->description }}
-                    </div>
-                </div>
-                <div class="trip-preview">
-                    <div class="trip-preview-title">
-                        {{ $trip->title }}
-                    </div>
-                    <div class="trip-preview-seats">
-                        {{ $trip->available_seats }} available seats
-                    </div>
-                    <div class="trip-preview-departure-time">
-                        Departure Time: {{ $trip->departure_time }}
-                    </div>
-                    <div class="trip-preview-description">
-                        {{ $trip->description }}
-                    </div>
-                </div>
-                <div class="trip-preview">
-                    <div class="trip-preview-title">
-                        {{ $trip->title }}
-                    </div>
-                    <div class="trip-preview-seats">
-                        {{ $trip->available_seats }} available seats
-                    </div>
-                    <div class="trip-preview-departure-time">
-                        Departure Time: {{ $trip->departure_time }}
-                    </div>
-                    <div class="trip-preview-description">
-                        {{ $trip->description }}
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -122,7 +38,7 @@
         var trips = {!! json_encode($trips->toArray(), JSON_HEX_TAG) !!};
 
         var markers = []
-        var map = new google.maps.Map(document.getElementById('map'), {
+        var map = new google.maps.Map(document.getElementById('index-map'), {
           zoom: 11,
           center: {lat: parseFloat(parseLatitude(trips[0].pickup)), lng: parseFloat(parseLongitude(trips[0].pickup))}
         });

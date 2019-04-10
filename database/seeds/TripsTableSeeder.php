@@ -45,6 +45,22 @@ class TripsTableSeeder extends Seeder
                 'pickup' => '50.899250, -114.069561',
                 'dropoff' => '51.078584, -114.134921',
                 'departure_time' => 'April 29, 2019 - 10:00AM'
+            ],[
+                'title' => 'Driving down the block',
+                'description' => 'I just want some company while I go down the block',
+                'available_seats' => '4',
+                'driver_id' => '4',
+                'pickup' => '51.062360, -114.065075',
+                'dropoff' => '51.062495, -114.067403',
+                'departure_time' => 'April 29, 2019 - 10:00AM'
+            ],[
+                'title' => 'School to climbing gym',
+                'description' => 'Just going from school to the climbing gym like always!',
+                'available_seats' => '3',
+                'driver_id' => '2',
+                'pickup' => '51.078584, -114.134921',
+                'dropoff' => '51.066188, -114.065190',
+                'departure_time' => 'April 29, 2019 - 10:00AM'
             ]
         ]);
     }
