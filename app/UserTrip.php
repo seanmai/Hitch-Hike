@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserTrip extends Model
 {
-    //
+    protected $guarded = [
+    ];
 }

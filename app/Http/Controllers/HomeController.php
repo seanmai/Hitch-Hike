@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // if(!Auth::check()){ return view('trips.index', ['trips' => $trips]);}
         return view('home');
     }
 }

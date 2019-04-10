@@ -18,6 +18,15 @@ class UserTripsTableSeeder extends Seeder
             ],[
                 'user_id' => '4',
                 'trip_id' => '3'
+            ],[
+                'user_id' => '2',
+                'trip_id' => '4'
+            ],[
+                'user_id' => '3',
+                'trip_id' => '4'
+            ],[
+                'user_id' => '4',
+                'trip_id' => '4'
             ]
         ]);
     }

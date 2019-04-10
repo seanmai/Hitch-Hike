@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\User;
 use App\Trip;
+use App\UserTrip;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TripPolicy
@@ -25,29 +26,38 @@ class TripPolicy
 
     /**
      * Determine whether the user can join the trip.
-     *
+     *     Not the user's trip and they are not already a part of the trip and more than 0 seats
      * @param  \App\User  $user
      * @param  \App\Trip  $trip
      * @return mixed
      */
     public function add(User $user, Trip $trip)
     {
-        //Not the user's trip and they are not already a part of the trip
-        // return $result = DB::table('YOUR_TABLE')->where('FIELD','OP','VALUE')->exists(); and seats >0
-        return !($trip->driver_id == $user->id) /* && UserTrip table doesn't have driverid == and tripid== */;
+        if(UserTrip::where([['user_id', $user->id], ['trip_id', $trip->id]])->doesntExist()){
+            if($trip->driver_id != $user->id && $trip->available_seats > 0){
+                return true;
+            }
+        } else{
+            return false;
+        }
     }
 
     /**
      * Determine whether the user can leave the trip.
-     *
+     *     Not the user's trip and they are already a part of the trip
      * @param  \App\User  $user
      * @param  \App\Trip  $trip
      * @return mixed
      */
     public function leave(User $user, Trip $trip)
     {
-        //Not the user's trip and they are already a part of the trip
-        return ($trip->driver_id == $user->id);
+        if(UserTrip::where([['user_id', $user->id], ['trip_id', $trip->id]])->exists()){
+            if($trip->driver_id != $user->id){
+                return true;
+            }
+        } else{
+            return false;
+        }
     }
 
     /**

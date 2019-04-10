@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 use App\Trip;
 use App\UserTrip;
 
 class TripsController extends Controller
 {
     public function index(){
-        $trips = Trip::all();
+        $trips = Trip::where('available_seats', '>', 0)->get();
         return view('trips.index', ['trips' => $trips]);
     }
 
@@ -18,7 +19,11 @@ class TripsController extends Controller
     }
 
     public function show(Trip $trip){
-        return view('trips.show', ['trip' => $trip]);
+        $driver = User::where('id', $trip->driver_id)->first();
+        $passengers = User::select('*', \DB::raw("users.id as id"))->join('user_trips', 'user_trips.user_id', '=', 'users.id')
+                           ->where('user_trips.trip_id', $trip->id)->get();
+        // return dd($passengers);
+        return view('trips.show', ['driver' => $driver, 'trip' => $trip, 'passengers' => $passengers]);
     }
 
     public function store(){
@@ -67,23 +72,22 @@ class TripsController extends Controller
     }
 
     public function add(Trip $trip){
-        // $this->authorize('add', $trip);
+        $this->authorize('add', $trip);
 
-        // $trip->decrement('available_seats');
-        // UserTrip::create([
-        //     'user_id' => auth()->id(),
-        //     'trip_id' => 'id'
-        // ]);
+        $trip->decrement('available_seats');
+        UserTrip::create([
+            'user_id' => auth()->id(),
+            'trip_id' => $trip->id
+        ]);
 
         return redirect('/trips');
     }
 
-    public function leave(Trip $trip){
-        // $this->authorize('leave', $trip);
-
-        // $trip->increment('available_seats');
-        // $usertrip = UserTrip::where('trip_id', $trip.id);
-        // $usertrip->delete();
+    public function remove(Trip $trip){
+        $this->authorize('leave', $trip);
+        $trip->increment('available_seats');
+        $usertrip = UserTrip::where([['trip_id', $trip->id], ['user_id', auth()->id()]]);
+        $usertrip->delete();
 
         return redirect('/trips');
     }

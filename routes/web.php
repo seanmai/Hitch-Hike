@@ -25,8 +25,8 @@ Route::put('/trips/{trip}', 'TripsController@update');
 Route::delete('/trips/{trip}', 'TripsController@destroy');
 
 Route::get('/users/{user}/trips', 'TripsController@showusers');
-// Route::put('/trips/{trip}/join', 'TripsController@add')->middleware('auth');
-// Route::put('/trips/{trip}/leave', 'TripsController@remove')->middleware('auth');
+Route::put('/trips/{trip}/join', 'TripsController@add')->middleware('auth');
+Route::put('/trips/{trip}/leave', 'TripsController@remove')->middleware('auth');
 
 Auth::routes();
 

@@ -34,8 +34,16 @@ class TripsTableSeeder extends Seeder
                 'description' => 'Definitely not a kidnapping. My van has room for 13 people',
                 'available_seats' => '13',
                 'driver_id' => '2',
-                'pickup' => '51.087651, -114.130915',
-                'dropoff' => '51.087651, -114.130915',
+                'pickup' => '51.129987, -113.972796',
+                'dropoff' => '51.130927, -113.878509',
+                'departure_time' => 'April 29, 2019 - 10:00AM'
+            ],[
+                'title' => 'Somerset to University',
+                'description' => 'Pooling to school with some friends, we have 1 seat available!',
+                'available_seats' => '1',
+                'driver_id' => '5',
+                'pickup' => '50.899250, -114.069561',
+                'dropoff' => '51.078584, -114.134921',
                 'departure_time' => 'April 29, 2019 - 10:00AM'
             ]
         ]);
