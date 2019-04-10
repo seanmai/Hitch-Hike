@@ -33,6 +33,10 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Karla',
                 'email' => 'karla@gmail.com',
                 'password' => bcrypt('asdfasdf')
+            ],[
+                'name' => "Je m'apelle Patrick",
+                'email' => 'patrick@gmail.com',
+                'password' => bcrypt('asdfasdf')
             ]
         ]);
     }

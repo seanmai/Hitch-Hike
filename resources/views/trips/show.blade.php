@@ -3,7 +3,6 @@
 @section('content')
     <h1>{{ $trip->title }}</h1>
     <p>{{ $trip->description }}</p>
-    <p>{{ $trip->driver_id }}</p>
     <p>Driver: {{ $driver->name }}</p>
     <p>Available Seats: {{ $trip->available_seats }}</p>
     <p>Departure Time: {{ $trip->departure_time }}</p>

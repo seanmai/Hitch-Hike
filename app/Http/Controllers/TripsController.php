@@ -27,6 +27,13 @@ class TripsController extends Controller
     }
 
     public function store(){
+        request()->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'available_seats' => 'required',
+            'departure_time' => 'required',
+        ]);
+
         Trip::create([
             'title' => request('title'),
             'driver_id' => auth()->id(),
