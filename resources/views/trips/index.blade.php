@@ -59,12 +59,17 @@
     }
     function panMap(trip){
         var center = {lat: parseFloat(parseLatitude(trip.pickup)), lng: parseFloat(parseLongitude(trip.pickup))}
-        markers[trip.id-1].setAnimation(google.maps.Animation.BOUNCE);
+        var marker = markers.filter(mrkr => {
+            return mrkr.title == trip.title
+        })[0];
+        marker.setAnimation(google.maps.Animation.BOUNCE);
         map.panTo(center);
     }
     function stopBounce(trip){
-        markers[trip.id-1].setAnimation(null);
-
+        var marker = markers.filter(mrkr => {
+            return mrkr.title == trip.title
+        })[0];
+        marker.setAnimation(null);
     }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfFT6ECPnarIUyb5o0gJHcrig9db8tRfQ&callback=initMap"

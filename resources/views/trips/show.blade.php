@@ -60,41 +60,46 @@
         @endcan
     </div>
     <script>
-    function initMap() {
-        var trip = {!! json_encode($trip->toArray(), JSON_HEX_TAG) !!};
-        console.log(trip.title);
-        var map = new google.maps.Map(document.getElementById('show-map'), {
-          zoom: 11,
-          center: {lat: parseFloat(parseLatitude(trip.pickup)), lng: parseFloat(parseLongitude(trip.pickup))}
-        });
-        var pickupMarker = new google.maps.Marker({
-            position: {lat: parseFloat(parseLatitude(trip.pickup)), lng: parseFloat(parseLongitude(trip.pickup))},
-            map: map,
-            title: "Pickup Location",
-            label: "A"
-        });
-        var dropoffMarker = new google.maps.Marker({
-            position: {lat: parseFloat(parseLatitude(trip.dropoff)), lng: parseFloat(parseLongitude(trip.dropoff))},
-            map: map,
-            title: "Dropoff Location",
-            label: "B"
-        });
+        function initMap() {
+            var trip = {!! json_encode($trip->toArray(), JSON_HEX_TAG) !!};
+            var map = new google.maps.Map(document.getElementById('show-map'), {
+              zoom: 11,
+              center: {lat: parseFloat(parseLatitude(trip.pickup)), lng: parseFloat(parseLongitude(trip.pickup))}
+            });
+            var pickupMarker = new google.maps.Marker({
+                position: {lat: parseFloat(parseLatitude(trip.pickup)), lng: parseFloat(parseLongitude(trip.pickup))},
+                map: map,
+                title: "Pickup Location",
+                label: "A"
+            });
+            var dropoffMarker = new google.maps.Marker({
+                position: {lat: parseFloat(parseLatitude(trip.dropoff)), lng: parseFloat(parseLongitude(trip.dropoff))},
+                map: map,
+                title: "Dropoff Location",
+                label: "B"
+            });
 
-        var pickupContent = '<div>Pickup Location:</div> <div>' + trip.pickup + '</div>'
-        var dropoffContent = '<div>Dropoff Location</div> <div>' + trip.dropoff + '</div>'
-        var pickupInfowindow = new google.maps.InfoWindow({
-          content: pickupContent
-        });
-        var dropoffInfowindow = new google.maps.InfoWindow({
-          content: dropoffContent
-        });
-        pickupMarker.addListener('click', function() {
-          pickupInfowindow.open(map, pickupMarker);
-        });
-        dropoffMarker.addListener('click', function() {
-          dropoffInfowindow.open(map, dropoffMarker);
-        });
-    }
+            var bounds = new google.maps.LatLngBounds();
+            bounds.extend(dropoffMarker.getPosition());
+            bounds.extend(pickupMarker.getPosition());
+            map.fitBounds(bounds);
+
+
+            var pickupContent = '<div>Pickup Location:</div> <div>' + trip.pickup + '</div>'
+            var dropoffContent = '<div>Dropoff Location</div> <div>' + trip.dropoff + '</div>'
+            var pickupInfowindow = new google.maps.InfoWindow({
+              content: pickupContent
+            });
+            var dropoffInfowindow = new google.maps.InfoWindow({
+              content: dropoffContent
+            });
+            pickupMarker.addListener('click', function() {
+              pickupInfowindow.open(map, pickupMarker);
+            });
+            dropoffMarker.addListener('click', function() {
+              dropoffInfowindow.open(map, dropoffMarker);
+            });
+        }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfFT6ECPnarIUyb5o0gJHcrig9db8tRfQ&callback=initMap"
     async defer></script>
