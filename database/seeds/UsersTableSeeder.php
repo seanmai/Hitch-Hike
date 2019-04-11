@@ -26,11 +26,11 @@ class UsersTableSeeder extends Seeder
                 'email' => 'glutenslayer@gmail.com',
                 'password' => bcrypt('asdfasdf')
             ],[
-                'name' => 'Chevy',
+                'name' => 'Aggressive Bean',
                 'email' => 'chevy@gmail.com',
                 'password' => bcrypt('asdfasdf')
             ],[
-                'name' => 'Karla',
+                'name' => 'Sweetest Bean',
                 'email' => 'karla@gmail.com',
                 'password' => bcrypt('asdfasdf')
             ],[
