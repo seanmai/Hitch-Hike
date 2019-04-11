@@ -62,7 +62,6 @@
     <script>
         function initMap() {
             var trip = {!! json_encode($trip->toArray(), JSON_HEX_TAG) !!};
-            console.log(trip.title);
             var map = new google.maps.Map(document.getElementById('show-map'), {
               zoom: 11,
               center: {lat: parseFloat(parseLatitude(trip.pickup)), lng: parseFloat(parseLongitude(trip.pickup))}
@@ -79,6 +78,12 @@
                 title: "Dropoff Location",
                 label: "B"
             });
+
+            var bounds = new google.maps.LatLngBounds();
+            bounds.extend(dropoffMarker.getPosition());
+            bounds.extend(pickupMarker.getPosition());
+            map.fitBounds(bounds);
+
 
             var pickupContent = '<div>Pickup Location:</div> <div>' + trip.pickup + '</div>'
             var dropoffContent = '<div>Dropoff Location</div> <div>' + trip.dropoff + '</div>'
