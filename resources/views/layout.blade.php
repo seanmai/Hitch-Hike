@@ -13,7 +13,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand" href="/trips"><img src="logo1.png" style="height: 40px; width: 300px;"></a>
+                <a class="navbar-brand" href="/trips"><img src="{{ asset('logo1.png') }}" style="height: 40px; width: 300px;"></a>
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
                 </ul>
                 <ul class="navbar-nav">
